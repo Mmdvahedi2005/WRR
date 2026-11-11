@@ -14,8 +14,8 @@ class WRRSchedulingTests(unittest.TestCase):
     def test_completion_and_metrics(self):
         r=schedule([Task("A",1,3),Task("B",1,2)])
         self.assertEqual(r["makespan"],5)
-        self.assertEqual(r["metrics"]["A"]["completion"],4)
-        self.assertEqual(r["metrics"]["B"]["completion"],5)
+        self.assertEqual(r["metrics"]["A"]["completion"],5)
+        self.assertEqual(r["metrics"]["B"]["completion"],4)
     def test_partial_final_quantum(self):
         r=schedule([Task("A",4,3)],quantum=2)
         self.assertEqual([e["duration"] for e in r["events"]],[2,1])
