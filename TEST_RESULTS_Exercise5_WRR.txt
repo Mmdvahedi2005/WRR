@@ -1,0 +1,19 @@
+WRR Exercise 5 — Test Results
+
+Command: python -m unittest -v
+
+Result: PASS
+Tests run: 9
+Failures: 0
+Errors: 0
+
+Covered:
+- Weighted dispatch order
+- Identical schedules across Semaphore, Monitor, and Both
+- Completion, turnaround, waiting, and makespan metrics
+- Shortened final quantum
+- Zero CPU burst
+- Invalid quantum
+- Invalid weight
+- Duplicate task names
+- Invalid synchronization mode
