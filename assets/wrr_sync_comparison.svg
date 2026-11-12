@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="1200" height="760" fill="#f7f8fa"/>
+<text x="600" y="42" text-anchor="middle" font-family="Arial" font-size="28" font-weight="bold" fill="#202938">Exercise 5 — WRR Synchronization Comparison</text>
+<text x="600" y="72" text-anchor="middle" font-family="Arial" font-size="16" fill="#526071">Weighted Round Robin: each task receives up to weight × quantum per round</text>
+<g font-family="Arial" text-anchor="middle">
+<rect x="30" y="105" width="360" height="590" rx="18" fill="#eaf2fb" stroke="#4e79a7" stroke-width="2"/>
+<rect x="420" y="105" width="360" height="590" rx="18" fill="#fff2e5" stroke="#f28e2b" stroke-width="2"/>
+<rect x="810" y="105" width="360" height="590" rx="18" fill="#eaf5ec" stroke="#59a14f" stroke-width="2"/>
+<text x="210" y="145" font-size="23" font-weight="bold" fill="#24476b">Semaphore</text>
+<text x="600" y="145" font-size="23" font-weight="bold" fill="#8c4c0c">Monitor</text>
+<text x="990" y="145" font-size="23" font-weight="bold" fill="#28613a">Both</text>
+</g>
+<g font-family="Arial" font-size="16" text-anchor="middle" fill="#263445">
+<rect x="105" y="185" width="210" height="48" rx="9" fill="white" stroke="#4e79a7"/><text x="210" y="215">Start / task list</text>
+<path d="M210 233 V270" stroke="#4e79a7" stroke-width="2"/><path d="M203 261 L210 270 L217 261" fill="none" stroke="#4e79a7" stroke-width="2"/>
+<rect x="105" y="270" width="210" height="55" rx="9" fill="white" stroke="#4e79a7"/><text x="210" y="293">Acquire binary</text><text x="210" y="313">semaphore</text>
+<path d="M210 325 V360" stroke="#4e79a7" stroke-width="2"/><path d="M203 351 L210 360 L217 351" fill="none" stroke="#4e79a7" stroke-width="2"/>
+<rect x="105" y="360" width="210" height="70" rx="9" fill="white" stroke="#4e79a7"/><text x="210" y="388">Dispatch up to</text><text x="210" y="411">weight quanta</text>
+<path d="M210 430 V465" stroke="#4e79a7" stroke-width="2"/><path d="M203 456 L210 465 L217 456" fill="none" stroke="#4e79a7" stroke-width="2"/>
+<rect x="105" y="465" width="210" height="55" rx="9" fill="white" stroke="#4e79a7"/><text x="210" y="498">Release semaphore</text>
+<text x="210" y="575" font-size="15">Protects critical updates</text><text x="210" y="600" font-size="15">and dispatch timeline</text>
+<rect x="495" y="185" width="210" height="48" rx="9" fill="white" stroke="#f28e2b"/><text x="600" y="215">Start / task list</text>
+<path d="M600 233 V270" stroke="#f28e2b" stroke-width="2"/><path d="M593 261 L600 270 L607 261" fill="none" stroke="#f28e2b" stroke-width="2"/>
+<rect x="495" y="270" width="210" height="55" rx="9" fill="white" stroke="#f28e2b"/><text x="600" y="293">Enter monitor</text><text x="600" y="313">condition lock</text>
+<path d="M600 325 V360" stroke="#f28e2b" stroke-width="2"/><path d="M593 351 L600 360 L607 351" fill="none" stroke="#f28e2b" stroke-width="2"/>
+<rect x="495" y="360" width="210" height="70" rx="9" fill="white" stroke="#f28e2b"/><text x="600" y="388">Dispatch up to</text><text x="600" y="411">weight quanta</text>
+<path d="M600 430 V465" stroke="#f28e2b" stroke-width="2"/><path d="M593 456 L600 465 L607 456" fill="none" stroke="#f28e2b" stroke-width="2"/>
+<rect x="495" y="465" width="210" height="55" rx="9" fill="white" stroke="#f28e2b"/><text x="600" y="498">Notify / exit monitor</text>
+<text x="600" y="575" font-size="15">Condition-based ownership</text><text x="600" y="600" font-size="15">for shared scheduler state</text>
+<rect x="885" y="185" width="210" height="48" rx="9" fill="white" stroke="#59a14f"/><text x="990" y="215">Start / task list</text>
+<path d="M990 233 V270" stroke="#59a14f" stroke-width="2"/><path d="M983 261 L990 270 L997 261" fill="none" stroke="#59a14f" stroke-width="2"/>
+<rect x="885" y="270" width="210" height="55" rx="9" fill="white" stroke="#59a14f"/><text x="990" y="293">Acquire semaphore</text><text x="990" y="313">then monitor lock</text>
+<path d="M990 325 V360" stroke="#59a14f" stroke-width="2"/><path d="M983 351 L990 360 L997 351" fill="none" stroke="#59a14f" stroke-width="2"/>
+<rect x="885" y="360" width="210" height="70" rx="9" fill="white" stroke="#59a14f"/><text x="990" y="388">Dispatch up to</text><text x="990" y="411">weight quanta</text>
+<path d="M990 430 V465" stroke="#59a14f" stroke-width="2"/><path d="M983 456 L990 465 L997 456" fill="none" stroke="#59a14f" stroke-width="2"/>
+<rect x="885" y="465" width="210" height="55" rx="9" fill="white" stroke="#59a14f"/><text x="990" y="498">Release both guards</text>
+<text x="990" y="575" font-size="15">Layered protection</text><text x="990" y="600" font-size="15">with fixed lock order</text>
+</g>
+<text x="600" y="665" text-anchor="middle" font-family="Arial" font-size="16" fill="#364152">All variants use the same WRR task order and weight-based quantum allocation.</text>
+</svg>

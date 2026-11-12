@@ -1,0 +1,9 @@
+Sample workload: P1(weight=3, burst=5), P2(weight=2, burst=4), P3(weight=1, burst=3), quantum=1.
+
+All three synchronization modes produce the same deterministic schedule and metrics:
+Makespan: 12
+P1: completion=8, turnaround=8, waiting=3
+P2: completion=10, turnaround=10, waiting=6
+P3: completion=12, turnaround=12, waiting=9
+
+Mode outputs: semaphore, monitor, both.
