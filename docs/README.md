@@ -1,57 +1,36 @@
-# Documentation Guide — WRR
+# Exercise 3 — Manual EDF & RM Scheduling
 
-This folder collects all documentation for the WRR repository.
-Start here, then follow the links below.
+## 1. Overview
+Manual scheduling of EDF and RM with 3 processes on paper. Case A (H=12, U=11/12 > Liu-Layland bound) and Case B (H=24, U=23/24). Includes hand-worked 24-tick timeline grids, RTA traces, and deadline audit tables.
 
-## Contents
+## 2. Problem Statement
+Demonstrate manual EDF and RM scheduling with 3 processes, showing where RM fails and EDF succeeds, with complete hand-worked documentation suitable for course submission.
 
-- [Figures](./figures/) — generated diagrams and charts
-  - `wrr_gantt.png` — Gantt chart from real `schedule()` output
-    (P1 w=3/b=5, P2 w=2/b=4, P3 w=1/b=3, quantum=1, makespan=12).
-    Read it left-to-right: each block is one quantum; taller weight means
-    more consecutive blocks per round.
-  - `wrr_cpu_share.png` — idealized weight share vs actual burst share.
-    Blue = `w_i / Σw`, orange = `burst_i / Σburst`. Use it to see why
-    weight proportions are expectations, not guarantees, with finite bursts.
-- [Reports](./reports/) — academic reports
-  - `report_en.md` — English report (Exercise 5 + base project).
-  - `report_fa.md` — Persian report (گزارش فارسی).
-- [References](./references/) — bibliography and further reading.
+## 3. Scientific Background
+RM uses static priorities by period (shorter period = higher priority). EDF uses dynamic priorities by absolute deadline (earliest = higher priority). The Liu-Layland bound for n=3 is approximately 0.7798; utilization above this requires exact Response-Time Analysis.
 
-## How figures are produced
+## 4. Methodology
+Fixed-priority RTA with fixed-point iteration. Manual timeline construction tick-by-tick over the hyperperiod. Deadline audit table for all jobs over [0, H).
 
-All PNG figures are generated from the real scheduler code, not drawn by hand:
+## 5. Implementation Details
+Python solver (`manual_edf_rm.py`) computing RTA traces and simulating both RM and EDF schedules. Verified against hand-worked results.
 
-```bash
-python tools_generate_figures.py
-```
+## 6. Experimental Setup
+Run `python3 src/manual_edf_rm.py` for Case A and Case B analysis. Run `python3 -m unittest tests/test_manual_edf_rm.py` for tests.
 
-The script imports `exercise5_wrr.schedule()`, runs the default workload,
-and writes the PNGs above. If you change the workload in the script,
-re-run it so figures and code stay consistent.
+## 7. Results & Analysis
+Case A: Both RM and EDF feasible (0 misses, U=0.9167 > LL=0.7798). Case B: RM misses P3,1 at t=12 (RTA diverges [4,8,9,13] > 12); EDF meets all 11/11 deadlines because at t=9, d(P3,1)=12 < d(P2,2)=16.
 
-## How to run and test
+## 8. Figures & Visualizations
+2 SVG (`manual_method_flowchart.svg`, `hyperperiod_lattice.svg`) + 3 PNG (`case_a_h12_rm_edf_gantt.png`, `case_b_h24_rm_edf_gantt.png`, `handworked_paper_worksheet.png`).
 
-```bash
-python -m pip install -r requirements.txt
-python exercise5_wrr.py --mode all --quantum 1   # simulation + Gantt SVGs
-python -m unittest -v                            # 9 tests
-python WRR.py                                    # interactive OS scheduler
-```
+## 9. Testing
+3 unit tests — all passing. Cover RTA convergence, deadline miss detection, and EDF vs RM divergence.
 
-Generated Gantt SVGs are written to the current directory by default
-(`wrr-gantt-<mode>.svg`); copy them to `outputs/` for archiving.
+## 10. Conclusion & References
+RM can miss deadlines even when utilization < 1 due to static priority inversion. EDF meets all deadlines in Case B. Hand-worked worksheet provided for paper submission. See `report_EX3_en.md` / `report_EX3_fa.md`.
 
-## File map
+---
 
-| Path | Purpose |
-|------|---------|
-| `../README.md` | Base project overview (WRR.py) |
-| `../PROJECT_INDEX.md` | Index of all 7 exercises and branches |
-| `../PROJECT_PROGRESS.md` | Upgrade status and remaining work |
-| `../README_Exercise5_WRR.md` | Exercise 5 overview |
-| `../exercise5_wrr.py` | Deterministic WRR simulation |
-| `../test_exercise5_wrr.py` | Unit tests (9 tests) |
-| `../WRR.py` | Interactive OS-process scheduler |
-| `../tools_generate_figures.py` | Figure generation from real output |
-| `../assets/wrr_sync_comparison.svg` | Sync-variant comparison diagram |
+**Source:** `src/` directory | **Tests:** `tests/` directory | **Figures:** `docs/figures/`
+**Reports:** `report_EX3_en.md`, `.docx`, `.pdf` and `report_EX3_fa.md`, `.docx`, `.pdf`
