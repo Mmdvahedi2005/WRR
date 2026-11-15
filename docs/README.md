@@ -1,57 +1,36 @@
-# Documentation Guide — WRR
+# Exercise 4 — Dekker, Peterson, Semaphore, Monitor Comparison
 
-This folder collects all documentation for the WRR repository.
-Start here, then follow the links below.
+## 1. Overview
+Complete comparison of Dekker, Peterson, Semaphore, and Monitor synchronization primitives. Uses exhaustive explicit-state BFS model checking across 7 protocols plus threaded contention benchmarks.
 
-## Contents
+## 2. Problem Statement
+Formally compare four mutual exclusion mechanisms with real model-checking data and threaded experiments, showing which properties each protocol satisfies or violates.
 
-- [Figures](./figures/) — generated diagrams and charts
-  - `wrr_gantt.png` — Gantt chart from real `schedule()` output
-    (P1 w=3/b=5, P2 w=2/b=4, P3 w=1/b=3, quantum=1, makespan=12).
-    Read it left-to-right: each block is one quantum; taller weight means
-    more consecutive blocks per round.
-  - `wrr_cpu_share.png` — idealized weight share vs actual burst share.
-    Blue = `w_i / Σw`, orange = `burst_i / Σburst`. Use it to see why
-    weight proportions are expectations, not guarantees, with finite bursts.
-- [Reports](./reports/) — academic reports
-  - `report_en.md` — English report (Exercise 5 + base project).
-  - `report_fa.md` — Persian report (گزارش فارسی).
-- [References](./references/) — bibliography and further reading.
+## 3. Scientific Background
+Mutual exclusion ensures only one process enters a critical section at a time. Dekker and Peterson are software-only algorithms for 2 processes. Semaphores and Monitors are OS-provided synchronization primitives.
 
-## How figures are produced
+## 4. Methodology
+Exhaustive explicit-state BFS model checker (`sync_verifier.py`) enumerating all reachable states for 7 protocol variants. Properties checked: mutual exclusion, deadlock freedom, progress (no contention), bounded waiting (FIFO/1). Threaded benchmark with 2,400 and 7,200 critical-section entries.
 
-All PNG figures are generated from the real scheduler code, not drawn by hand:
+## 5. Implementation Details
+State-based model checker with BFS exploration. Each protocol modeled as a finite-state machine. Threaded benchmark using Python threading with BoundedSemaphore and Condition.
 
-```bash
-python tools_generate_figures.py
-```
+## 6. Experimental Setup
+Run `python3 src/sync_verifier.py` for model checking and benchmarks. Run `python3 -m unittest tests/test_sync_verifier.py` for tests.
 
-The script imports `exercise5_wrr.schedule()`, runs the default workload,
-and writes the PNGs above. If you change the workload in the script,
-re-run it so figures and code stay consistent.
+## 7. Results & Analysis
+Model checker: dekker (86 states, all pass), peterson (20 states, all pass), semaphore_fifo (5 states, all pass), monitor_mesa (24 states, all pass, Mesa barging noted). Naive flag, strict alternation, and flag deadlock fail various properties. Threaded: 0 safety violations across all runs.
 
-## How to run and test
+## 8. Figures & Visualizations
+2 SVG (`peterson_vs_monitor_state.svg`, `sync_evolution_architecture.svg`) + 2 PNG (`model_checker_verdicts.png`, `contention_benchmarks.png`).
 
-```bash
-python -m pip install -r requirements.txt
-python exercise5_wrr.py --mode all --quantum 1   # simulation + Gantt SVGs
-python -m unittest -v                            # 9 tests
-python WRR.py                                    # interactive OS scheduler
-```
+## 9. Testing
+3 unit tests — all passing. Cover model checker state counts, property verdicts, and benchmark safety.
 
-Generated Gantt SVGs are written to the current directory by default
-(`wrr-gantt-<mode>.svg`); copy them to `outputs/` for archiving.
+## 10. Conclusion & References
+Dekker and Peterson provide correct mutual exclusion for 2 processes with bounded waiting. Semaphore and Monitor are more general and also correct. All verified by exhaustive model checking and threaded experiments. See `report_EX4_en.md` / `report_EX4_fa.md`.
 
-## File map
+---
 
-| Path | Purpose |
-|------|---------|
-| `../README.md` | Base project overview (WRR.py) |
-| `../PROJECT_INDEX.md` | Index of all 7 exercises and branches |
-| `../PROJECT_PROGRESS.md` | Upgrade status and remaining work |
-| `../README_Exercise5_WRR.md` | Exercise 5 overview |
-| `../exercise5_wrr.py` | Deterministic WRR simulation |
-| `../test_exercise5_wrr.py` | Unit tests (9 tests) |
-| `../WRR.py` | Interactive OS-process scheduler |
-| `../tools_generate_figures.py` | Figure generation from real output |
-| `../assets/wrr_sync_comparison.svg` | Sync-variant comparison diagram |
+**Source:** `src/` directory | **Tests:** `tests/` directory | **Figures:** `docs/figures/`
+**Reports:** `report_EX4_en.md`, `.docx`, `.pdf` and `report_EX4_fa.md`, `.docx`, `.pdf`

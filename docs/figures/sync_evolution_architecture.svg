@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="430" viewBox="0 0 940 430">
+<defs>
+  <linearGradient id="hdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#0F172A"/>
+    <stop offset="100%" stop-color="#1E3A8A"/>
+  </linearGradient>
+  <filter id="cardShadow" x="-4%" y="-4%" width="108%" height="112%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+  </marker>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563EB"/>
+  </marker>
+  <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+  </marker>
+</defs>
+<rect width="940" height="430" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+<rect x="0" y="0" width="940" height="64" rx="12" fill="url(#hdrGrad)"/>
+<rect x="0" y="50" width="940" height="14" fill="url(#hdrGrad)"/>
+<text x="28" y="30" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF">Evolution of Mutual Exclusion — Dekker & Peterson vs Semaphore & Monitor</text>
+<text x="28" y="50" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" fill="#CBD5E1">From User-Space Shared-Memory Busy-Waiting to Kernel Blocking Queues and Compiler-Encapsulated Monitors</text>
+<g filter="url(#cardShadow)">
+  <rect x="30" y="95" width="205" height="295" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+</g>
+<text x="132.5" y="117" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Dekker (1965)</text>
+<text x="132.5" y="135" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Pure Software (2 threads)</text>
+<text x="132.5" y="150" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Shared: flag[2], turn</text>
+<text x="132.5" y="165" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Nested backoff loop:</text>
+<text x="132.5" y="180" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  drops flag[i] if turn==j</text>
+<text x="132.5" y="195" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Waiting: Busy-Wait (Spin)</text>
+<text x="132.5" y="210" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Reachable states: 86</text>
+<text x="132.5" y="225" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Mutex / Deadlock-Free: YES</text>
+<text x="132.5" y="240" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Bounded Wait: 1 turn</text>
+<text x="132.5" y="255" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Caveat: Needs fences on</text>
+<text x="132.5" y="270" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  relaxed CPU memory</text>
+<g filter="url(#cardShadow)">
+  <rect x="258" y="95" width="205" height="295" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+</g>
+<text x="360.5" y="117" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Peterson (1981)</text>
+<text x="360.5" y="135" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Pure Software (2 threads)</text>
+<text x="360.5" y="150" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Shared: flag[2], turn</text>
+<text x="360.5" y="165" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Elegant victim write:</text>
+<text x="360.5" y="180" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  flag[i]=T; turn=j</text>
+<text x="360.5" y="195" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Waiting: Busy-Wait (Spin)</text>
+<text x="360.5" y="210" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Reachable states: 20</text>
+<text x="360.5" y="225" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Mutex / Deadlock-Free: YES</text>
+<text x="360.5" y="240" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Bounded Wait: 1 turn</text>
+<text x="360.5" y="255" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Caveat: 2-process core;</text>
+<text x="360.5" y="270" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  Filter lock for N > 2</text>
+<g filter="url(#cardShadow)">
+  <rect x="486" y="95" width="205" height="295" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
+</g>
+<text x="588.5" y="117" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Semaphore (Dijkstra)</text>
+<text x="588.5" y="135" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• OS / Kernel Primitive (N)</text>
+<text x="588.5" y="150" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• State: integer S + WaitQ</text>
+<text x="588.5" y="165" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Atomic P(S) / wait() &</text>
+<text x="588.5" y="180" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  V(S) / signal()</text>
+<text x="588.5" y="195" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Waiting: Blocks in OS Q</text>
+<text x="588.5" y="210" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  (zero spin CPU waste)</text>
+<text x="588.5" y="225" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Strong FIFO bound: N-1</text>
+<text x="588.5" y="240" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Risk: Scattered P/V calls</text>
+<text x="588.5" y="255" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  can invert or forget V()</text>
+<g filter="url(#cardShadow)">
+  <rect x="714" y="95" width="205" height="295" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+</g>
+<text x="816.5" y="117" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Monitor (Hoare / Mesa)</text>
+<text x="816.5" y="135" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• High-Level ADT (N threads)</text>
+<text x="816.5" y="150" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Implicit mutex lock +</text>
+<text x="816.5" y="165" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  Condition Variables (CV)</text>
+<text x="816.5" y="180" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Mesa rule: while(!cond)</text>
+<text x="816.5" y="195" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  cv.wait() + notify_all()</text>
+<text x="816.5" y="210" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Waiting: Blocks on CV Q</text>
+<text x="816.5" y="225" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">• Structured encapsulation</text>
+<text x="816.5" y="240" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  eliminates forgotten V()</text>
+<line x1="235" y1="242" x2="256" y2="242" stroke="#1E3A8A" stroke-width="1.7" marker-end="url(#arrowBlue)"/>
+<line x1="463" y1="242" x2="484" y2="242" stroke="#1E3A8A" stroke-width="1.7" marker-end="url(#arrowBlue)"/>
+<line x1="691" y1="242" x2="712" y2="242" stroke="#1E3A8A" stroke-width="1.7" marker-end="url(#arrowBlue)"/>
+</svg>

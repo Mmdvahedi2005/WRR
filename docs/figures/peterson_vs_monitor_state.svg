@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="390" viewBox="0 0 920 390">
+<defs>
+  <linearGradient id="hdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#0F172A"/>
+    <stop offset="100%" stop-color="#1E3A8A"/>
+  </linearGradient>
+  <filter id="cardShadow" x="-4%" y="-4%" width="108%" height="112%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+  </marker>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563EB"/>
+  </marker>
+  <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+  </marker>
+</defs>
+<rect width="920" height="390" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+<rect x="0" y="0" width="920" height="64" rx="12" fill="url(#hdrGrad)"/>
+<rect x="0" y="50" width="920" height="14" fill="url(#hdrGrad)"/>
+<text x="28" y="30" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF">Protocol State-Transition Comparison — Peterson Doorway vs Mesa Monitor Condition Queue</text>
+<text x="28" y="50" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" fill="#CBD5E1">Comparing why Peterson proves 1-bounded waiting in 20 states while Mesa Monitors require a while-loop recheck</text>
+<g filter="url(#cardShadow)">
+  <rect x="35" y="92" width="405" height="265" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+</g>
+<text x="237.5" y="114" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Peterson Protocol (P_i Doorway & Spin)</text>
+<text x="237.5" y="132" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">[REM] -> flag[i] = True               (Intent)</text>
+<text x="237.5" y="147" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  |   -> turn = j                     (Yield priority)</text>
+<text x="237.5" y="162" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  v</text>
+<text x="237.5" y="177" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">[SPIN] while (flag[j] && turn == j)   (Doorway guard)</text>
+<text x="237.5" y="192" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  |   (Exits when flag[j]==False OR P_j sets turn=i!)</text>
+<text x="237.5" y="207" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  v</text>
+<text x="237.5" y="222" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">[CS]   Critical Section (Exclusive: P0 & P1 never co-enter)</text>
+<text x="237.5" y="237" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  |   -> flag[i] = False              (Exit release)</text>
+<g filter="url(#cardShadow)">
+  <rect x="480" y="92" width="405" height="265" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+</g>
+<text x="682.5" y="114" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Mesa Monitor Protocol (Condition Variable)</text>
+<text x="682.5" y="132" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">[REM] -> acquire(monitor_lock)</text>
+<text x="682.5" y="147" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  |   -> while (busy):                (MANDATORY while!)</text>
+<text x="682.5" y="162" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  |         cond.wait()               (Atomically drops lock</text>
+<text x="682.5" y="177" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  |                                    & sleeps on CV queue)</text>
+<text x="682.5" y="192" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  |   -> busy = True; release(lock)</text>
+<text x="682.5" y="207" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  v</text>
+<text x="682.5" y="222" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">[CS]   Protected Operation</text>
+<text x="682.5" y="237" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">  |   -> acquire; busy=False; notify_all(); release</text>
+</svg>
