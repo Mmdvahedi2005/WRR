@@ -1,57 +1,36 @@
-# Documentation Guide — WRR
+# Exercise 1 — WRR Algorithm Introduction
 
-This folder collects all documentation for the WRR repository.
-Start here, then follow the links below.
+## 1. Overview
+Complete introduction to the Weighted Round Robin (WRR) scheduling algorithm, including flowchart, pseudocode, figures, and full explanations in English and Persian. Covers both Classical WRR (block quanta per round) and Interleaved WRR (sub-rounds for lower response time).
 
-## Contents
+## 2. Problem Statement
+Provide a comprehensive, executable introduction to WRR scheduling for the Operating Systems course, with real simulation data, visual figures, and bilingual documentation.
 
-- [Figures](./figures/) — generated diagrams and charts
-  - `wrr_gantt.png` — Gantt chart from real `schedule()` output
-    (P1 w=3/b=5, P2 w=2/b=4, P3 w=1/b=3, quantum=1, makespan=12).
-    Read it left-to-right: each block is one quantum; taller weight means
-    more consecutive blocks per round.
-  - `wrr_cpu_share.png` — idealized weight share vs actual burst share.
-    Blue = `w_i / Σw`, orange = `burst_i / Σburst`. Use it to see why
-    weight proportions are expectations, not guarantees, with finite bursts.
-- [Reports](./reports/) — academic reports
-  - `report_en.md` — English report (Exercise 5 + base project).
-  - `report_fa.md` — Persian report (گزارش فارسی).
-- [References](./references/) — bibliography and further reading.
+## 3. Scientific Background
+Round Robin is a time-sharing CPU scheduling algorithm. WRR extends it by assigning each process a weight; in each round, a process receives up to its weight number of quanta. Interleaved WRR divides each round into sub-rounds so low-weight processes are served earlier.
 
-## How figures are produced
+## 4. Methodology
+Discrete-time deterministic simulator in Python (`wrr_scheduler.py`). Four scenarios: S1 baseline, S2 backlogged proportional, S3 high-skew weights, S4 dynamic arrivals. Metrics: makespan, average wait, average response, Jain's fairness index.
 
-All PNG figures are generated from the real scheduler code, not drawn by hand:
+## 5. Implementation Details
+Python class `WRRScheduler` with `classic` and `interleaved` modes. Quantum sweep analysis. 10 unit tests covering correctness, fairness, and edge cases.
 
-```bash
-python tools_generate_figures.py
-```
+## 6. Experimental Setup
+Run `python3 src/wrr_scheduler.py` for scenario output. Run `python3 -m unittest tests/test_wrr_scheduler.py` for tests. No external dependencies beyond Python stdlib.
 
-The script imports `exercise5_wrr.schedule()`, runs the default workload,
-and writes the PNGs above. If you change the workload in the script,
-re-run it so figures and code stay consistent.
+## 7. Results & Analysis
+S1: Classic avg_resp=2.67 vs Interleaved avg_resp=1.00. S3: Classic avg_resp=7.25 vs Interleaved avg_resp=1.50. Both preserve identical throughput and weighted shares.
 
-## How to run and test
+## 8. Figures & Visualizations
+2 SVG structural diagrams (`wrr_flowchart.svg`, `wrr_architecture_overview.svg`) + 3 PNG data-driven charts (`wrr_gantt_variants.png`, `wrr_performance_tradeoff.png`, `wrr_architecture_overview.png`).
 
-```bash
-python -m pip install -r requirements.txt
-python exercise5_wrr.py --mode all --quantum 1   # simulation + Gantt SVGs
-python -m unittest -v                            # 9 tests
-python WRR.py                                    # interactive OS scheduler
-```
+## 9. Testing
+10 unit tests — all passing. Tests cover weight-controlled quanta, completion metrics, partial quantum, zero burst, invalid inputs, duplicate names, and mode equivalence.
 
-Generated Gantt SVGs are written to the current directory by default
-(`wrr-gantt-<mode>.svg`); copy them to `outputs/` for archiving.
+## 10. Conclusion & References
+WRR provides weighted CPU allocation proportional to assigned weights. The interleaved variant reduces response time for low-weight processes without affecting overall throughput. See `report_EX1_en.md` / `report_EX1_fa.md` for full bilingual reports.
 
-## File map
+---
 
-| Path | Purpose |
-|------|---------|
-| `../README.md` | Base project overview (WRR.py) |
-| `../PROJECT_INDEX.md` | Index of all 7 exercises and branches |
-| `../PROJECT_PROGRESS.md` | Upgrade status and remaining work |
-| `../README_Exercise5_WRR.md` | Exercise 5 overview |
-| `../exercise5_wrr.py` | Deterministic WRR simulation |
-| `../test_exercise5_wrr.py` | Unit tests (9 tests) |
-| `../WRR.py` | Interactive OS-process scheduler |
-| `../tools_generate_figures.py` | Figure generation from real output |
-| `../assets/wrr_sync_comparison.svg` | Sync-variant comparison diagram |
+**Source:** `src/` directory | **Tests:** `tests/` directory | **Figures:** `docs/figures/`
+**Reports:** `report_EX1_en.md`, `.docx`, `.pdf` and `report_EX1_fa.md`, `.docx`, `.pdf`

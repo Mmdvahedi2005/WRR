@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+<defs>
+  <linearGradient id="hdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#0F172A"/>
+    <stop offset="100%" stop-color="#1E3A8A"/>
+  </linearGradient>
+  <filter id="cardShadow" x="-4%" y="-4%" width="108%" height="112%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+  </marker>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563EB"/>
+  </marker>
+  <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+  </marker>
+</defs>
+<rect width="900" height="500" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+<rect x="0" y="0" width="900" height="64" rx="12" fill="url(#hdrGrad)"/>
+<rect x="0" y="50" width="900" height="14" fill="url(#hdrGrad)"/>
+<text x="28" y="30" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF">Classical Weighted Round Robin — Step-by-Step Control Flowchart</text>
+<text x="28" y="50" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" fill="#CBD5E1">Exact execution logic of simulate_wrr(variant='classic') and WRR.py</text>
+<g filter="url(#cardShadow)">
+  <rect x="340" y="82" width="220" height="46" rx="8" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="1.6"/>
+</g>
+<text x="450.0" y="104" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Start: Initialize clock = 0</text>
+<text x="450.0" y="122" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Load tasks, validate w_i > 0, q > 0</text>
+<polygon points="450,144 585,178 450,212 315,178" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.6" filter="url(#cardShadow)"/>
+<text x="450" y="182" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="bold" fill="#0F172A">Any task remaining > 0?</text>
+<g filter="url(#cardShadow)">
+  <rect x="665" y="152" width="205" height="52" rx="8" fill="#DCFCE7" stroke="#059669" stroke-width="1.6"/>
+</g>
+<text x="767.5" y="174" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Compute Final Metrics</text>
+<text x="767.5" y="192" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Turnaround, Waiting, Jain's J</text>
+<polygon points="450,234 585,268 450,302 315,268" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.6" filter="url(#cardShadow)"/>
+<text x="450" y="265" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="11" font-weight="bold" fill="#0F172A">Any ready task</text>
+<text x="450" y="281" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">(arrival_i <= clock)?</text>
+<g filter="url(#cardShadow)">
+  <rect x="70" y="242" width="195" height="52" rx="8" fill="#F1F5F9" stroke="#64748B" stroke-width="1.6"/>
+</g>
+<text x="167.5" y="264" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Advance Clock to Next Arrival</text>
+<text x="167.5" y="282" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Record IDLE segment</text>
+<g filter="url(#cardShadow)">
+  <rect x="315" y="336" width="270" height="56" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+</g>
+<text x="450.0" y="358" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Select Next Ready Task T_i in Ring</text>
+<text x="450.0" y="376" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Inner loop k = 1 .. w_i while rem_i > 0</text>
+<g filter="url(#cardShadow)">
+  <rect x="305" y="418" width="290" height="60" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
+</g>
+<text x="450.0" y="440" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Execute Slice: run = min(q, rem_i)</text>
+<text x="450.0" y="458" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">rem_i -= run; clock += run; log Gantt</text>
+<text x="450.0" y="473" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">If rem_i == 0 -> completion_i = clock</text>
+<line x1="450" y1="128" x2="450" y2="144" stroke="#334155" stroke-width="1.7" marker-end="url(#arrow)"/>
+<line x1="585" y1="178" x2="663" y2="178" stroke="#059669" stroke-width="1.7" marker-end="url(#arrowBlue)"/>
+<text x="624.0" y="172.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="bold" fill="#059669">No (Done)</text>
+<line x1="450" y1="212" x2="450" y2="234" stroke="#334155" stroke-width="1.7" marker-end="url(#arrow)"/>
+<text x="450.0" y="217.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="bold" fill="#334155">Yes</text>
+<line x1="315" y1="268" x2="267" y2="268" stroke="#64748B" stroke-width="1.7" marker-end="url(#arrow)"/>
+<text x="291.0" y="262.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="bold" fill="#64748B">No</text>
+<line x1="167" y1="242" x2="313" y2="178" stroke="#64748B" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+<text x="240.0" y="204.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="bold" fill="#64748B">Resume loop</text>
+<line x1="450" y1="302" x2="450" y2="334" stroke="#334155" stroke-width="1.7" marker-end="url(#arrow)"/>
+<text x="450.0" y="312.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="bold" fill="#334155">Yes</text>
+<line x1="450" y1="392" x2="450" y2="416" stroke="#334155" stroke-width="1.7" marker-end="url(#arrow)"/>
+<line x1="305" y1="448" x2="60" y2="448" stroke="#334155" stroke-width="1.7" marker-end="url(#arrow)"/>
+<line x1="60" y1="448" x2="60" y2="178" stroke="#334155" stroke-width="1.7"/>
+<line x1="60" y1="178" x2="313" y2="178" stroke="#334155" stroke-width="1.7" marker-end="url(#arrow)"/>
+<text x="186.5" y="172.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="bold" fill="#334155">Next Task / Round</text>
+</svg>
