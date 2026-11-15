@@ -1,57 +1,36 @@
-# Documentation Guide — WRR
+# Exercise 7 — Research Paper & Seminar
 
-This folder collects all documentation for the WRR repository.
-Start here, then follow the links below.
+## 1. Overview
+Research paper and seminar synthesizing Exercises 1–5. Includes bilingual paper (PAPER_EN/PAPER_FA in MD, DOCX, PDF), seminar decks (SEMINAR_WRR_EN/FA.pptx), and references (REFERENCES.md). Optionally includes Readers-Writers synchronization comparison appendix.
 
-## Contents
+## 2. Problem Statement
+Synthesize all preceding exercises into a research paper and seminar presentation, with full bilingual support and a comprehensive reference list.
 
-- [Figures](./figures/) — generated diagrams and charts
-  - `wrr_gantt.png` — Gantt chart from real `schedule()` output
-    (P1 w=3/b=5, P2 w=2/b=4, P3 w=1/b=3, quantum=1, makespan=12).
-    Read it left-to-right: each block is one quantum; taller weight means
-    more consecutive blocks per round.
-  - `wrr_cpu_share.png` — idealized weight share vs actual burst share.
-    Blue = `w_i / Σw`, orange = `burst_i / Σburst`. Use it to see why
-    weight proportions are expectations, not guarantees, with finite bursts.
-- [Reports](./reports/) — academic reports
-  - `report_en.md` — English report (Exercise 5 + base project).
-  - `report_fa.md` — Persian report (گزارش فارسی).
-- [References](./references/) — bibliography and further reading.
+## 3. Scientific Background
+A research paper integrates findings from WRR algorithm introduction, EDF/RM comparison, manual scheduling, synchronization primitives, and WRR synchronization into a coherent academic contribution.
 
-## How figures are produced
+## 4. Methodology
+Cross-exercise evidence aggregation (`seminar_synthesis.py`) importing Ex 1–5 modules directly. All metrics verified against real code output. Bilingual document generation via shared doc engine.
 
-All PNG figures are generated from the real scheduler code, not drawn by hand:
+## 5. Implementation Details
+Python evidence collector synthesizing results from Exercises 1–5. Report generation in Markdown, DOCX (python-pptx for decks), and PDF (ReportLab with Vazirmatn for Persian).
 
-```bash
-python tools_generate_figures.py
-```
+## 6. Experimental Setup
+View `PAPER_EN.md` / `PAPER_FA.md` for papers. Open `SEMINAR_WRR_EN.pptx` / `SEMINAR_WRR_FA.pptx` for decks. Read `REFERENCES.md` for bibliography.
 
-The script imports `exercise5_wrr.schedule()`, runs the default workload,
-and writes the PNGs above. If you change the workload in the script,
-re-run it so figures and code stay consistent.
+## 7. Results & Analysis
+Unified findings across all exercises with real data. Seminar decks with 8 slides each (EN and FA). References covering Liu-Layland, Dekker, Peterson, Lamport, and Jain.
 
-## How to run and test
+## 8. Figures & Visualizations
+2 SVG (`research_synthesis_pipeline.svg`, `scheduling_sync_taxonomy.svg`) + 1 PNG (`synthesis_headline_findings.png`).
 
-```bash
-python -m pip install -r requirements.txt
-python exercise5_wrr.py --mode all --quantum 1   # simulation + Gantt SVGs
-python -m unittest -v                            # 9 tests
-python WRR.py                                    # interactive OS scheduler
-```
+## 9. Testing
+1 unit test — passing. Verifies evidence aggregation completeness.
 
-Generated Gantt SVGs are written to the current directory by default
-(`wrr-gantt-<mode>.svg`); copy them to `outputs/` for archiving.
+## 10. Conclusion & References
+Exercise 7 provides a complete academic synthesis with bilingual paper, seminar decks, and references. All claims backed by real code execution. See `report_EX7_en.md` / `report_EX7_fa.md`.
 
-## File map
+---
 
-| Path | Purpose |
-|------|---------|
-| `../README.md` | Base project overview (WRR.py) |
-| `../PROJECT_INDEX.md` | Index of all 7 exercises and branches |
-| `../PROJECT_PROGRESS.md` | Upgrade status and remaining work |
-| `../README_Exercise5_WRR.md` | Exercise 5 overview |
-| `../exercise5_wrr.py` | Deterministic WRR simulation |
-| `../test_exercise5_wrr.py` | Unit tests (9 tests) |
-| `../WRR.py` | Interactive OS-process scheduler |
-| `../tools_generate_figures.py` | Figure generation from real output |
-| `../assets/wrr_sync_comparison.svg` | Sync-variant comparison diagram |
+**Source:** `src/` directory | **Tests:** `tests/` directory | **Figures:** `docs/figures/`
+**Reports:** `report_EX7_en.md`, `.docx`, `.pdf` and `report_EX7_fa.md`, `.docx`, `.pdf`
