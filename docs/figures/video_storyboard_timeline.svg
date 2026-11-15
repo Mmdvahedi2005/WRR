@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420">
+<defs>
+  <linearGradient id="hdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#0F172A"/>
+    <stop offset="100%" stop-color="#1E3A8A"/>
+  </linearGradient>
+  <filter id="cardShadow" x="-4%" y="-4%" width="108%" height="112%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+  </marker>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563EB"/>
+  </marker>
+  <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+  </marker>
+</defs>
+<rect width="960" height="420" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+<rect x="0" y="0" width="960" height="64" rx="12" fill="url(#hdrGrad)"/>
+<rect x="0" y="50" width="960" height="14" fill="url(#hdrGrad)"/>
+<text x="28" y="30" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF">150-Second Technical Video Storyboard — WRR Specification & Comparison with EDF/RM</text>
+<text x="28" y="50" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" fill="#CBD5E1">Six Timed Scenes (02:30 Total) with Synchronized Narration, Formulas, and Live Simulation Visuals</text>
+<g filter="url(#cardShadow)">
+  <rect x="25" y="95" width="280" height="125" rx="8" fill="#F8FAFC" stroke="#1E3A8A" stroke-width="1.6"/>
+</g>
+<text x="165.0" y="117" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Scene 1 (00:00 – 00:22)</text>
+<text x="165.0" y="135" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Problem Statement & Core Idea of Weighte</text>
+<text x="165.0" y="150" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Architecture & weighted quantum ring: P1(w</text>
+<text x="165.0" y="165" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Ideal CPU share = w_i / sum(w_j) -> 50.0%,</text>
+<g filter="url(#cardShadow)">
+  <rect x="340" y="95" width="280" height="125" rx="8" fill="#F8FAFC" stroke="#2563EB" stroke-width="1.6"/>
+</g>
+<text x="480.0" y="117" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Scene 2 (00:22 – 00:48)</text>
+<text x="480.0" y="135" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Step-by-Step Execution of WRR (Round-Sli</text>
+<text x="480.0" y="150" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Animated Gantt trace over t = 0..12 for P1</text>
+<text x="480.0" y="165" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Makespan = 12, P1 finishes at t=8, P2 at t</text>
+<g filter="url(#cardShadow)">
+  <rect x="655" y="95" width="280" height="125" rx="8" fill="#F8FAFC" stroke="#0D9488" stroke-width="1.6"/>
+</g>
+<text x="795.0" y="117" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Scene 3 (00:48 – 01:16)</text>
+<text x="795.0" y="135" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Algorithmic Foundations of RM (Static Pe</text>
+<text x="795.0" y="150" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Decision-rule comparison matrix & Liu-Layl</text>
+<text x="795.0" y="165" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">WRR = O(1) dispatch without deadlines; RM </text>
+<g filter="url(#cardShadow)">
+  <rect x="25" y="250" width="280" height="125" rx="8" fill="#F8FAFC" stroke="#D97706" stroke-width="1.6"/>
+</g>
+<text x="165.0" y="272" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Scene 4 (01:16 – 01:48)</text>
+<text x="165.0" y="290" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Live Head-to-Head Simulation at High Uti</text>
+<text x="165.0" y="305" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Synchronized 3-track Gantt race on P1(2,5,</text>
+<text x="165.0" y="320" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">EDF = 0/15 misses (optimal); RM = 1/15 mis</text>
+<g filter="url(#cardShadow)">
+  <rect x="340" y="250" width="280" height="125" rx="8" fill="#F8FAFC" stroke="#DC2626" stroke-width="1.6"/>
+</g>
+<text x="480.0" y="272" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Scene 5 (01:48 – 02:14)</text>
+<text x="480.0" y="290" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Overload & Starvation Behavior (U = 137.</text>
+<text x="480.0" y="305" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">CPU share bar race under overload: WRR (50</text>
+<text x="480.0" y="320" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Starvation-free guarantee: WRR gives P3 16</text>
+<g filter="url(#cardShadow)">
+  <rect x="655" y="250" width="280" height="125" rx="8" fill="#F8FAFC" stroke="#7C3AED" stroke-width="1.6"/>
+</g>
+<text x="795.0" y="272" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Scene 6 (02:14 – 02:30)</text>
+<text x="795.0" y="290" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Engineering Synthesis: Where to Deploy W</text>
+<text x="795.0" y="305" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Decision tree: Hard Periodic Safety -> RM </text>
+<text x="795.0" y="320" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Total runtime: 150 seconds (2 min 30 sec) </text>
+</svg>

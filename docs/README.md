@@ -1,57 +1,36 @@
-# Documentation Guide — WRR
+# Exercise 6 — Video Presentation Package
 
-This folder collects all documentation for the WRR repository.
-Start here, then follow the links below.
+## 1. Overview
+Video presentation package comparing WRR vs EDF vs RM. 6 scenes totaling 150 seconds (02:30) — exceeds the 2-minute course requirement. Includes animated GIF demo, storyboard SVG, keyframe composite, and narration script.
 
-## Contents
+## 2. Problem Statement
+Create a >2-minute video presentation on WRR specifications and comparison with EDF and RM, suitable for course submission.
 
-- [Figures](./figures/) — generated diagrams and charts
-  - `wrr_gantt.png` — Gantt chart from real `schedule()` output
-    (P1 w=3/b=5, P2 w=2/b=4, P3 w=1/b=3, quantum=1, makespan=12).
-    Read it left-to-right: each block is one quantum; taller weight means
-    more consecutive blocks per round.
-  - `wrr_cpu_share.png` — idealized weight share vs actual burst share.
-    Blue = `w_i / Σw`, orange = `burst_i / Σburst`. Use it to see why
-    weight proportions are expectations, not guarantees, with finite bursts.
-- [Reports](./reports/) — academic reports
-  - `report_en.md` — English report (Exercise 5 + base project).
-  - `report_fa.md` — Persian report (گزارش فارسی).
-- [References](./references/) — bibliography and further reading.
+## 3. Scientific Background
+Video presentations require a storyboard with timed scenes, visual demonstrations, and a clear narrative arc. This package provides all pre-production assets plus a rendered animated GIF demo.
 
-## How figures are produced
+## 4. Methodology
+6-scene storyboard (`video_storyboard_sim.py`) with timed scenes: Intro → WRR → EDF → RM → Comparison → Conclusion. Animated GIF generated from simulation traces. Keyframe composite for slide extraction.
 
-All PNG figures are generated from the real scheduler code, not drawn by hand:
+## 5. Implementation Details
+Python script generating storyboard timing, simulation traces for high-util and overload cases, and Pillow multi-frame animated GIF (`wrr_vs_edf_rm_demo.gif`).
 
-```bash
-python tools_generate_figures.py
-```
+## 6. Experimental Setup
+Run `python3 src/video_storyboard_sim.py` for storyboard and simulation output. View `outputs/wrr_vs_edf_rm_demo.gif` for the animated demo.
 
-The script imports `exercise5_wrr.schedule()`, runs the default workload,
-and writes the PNGs above. If you change the workload in the script,
-re-run it so figures and code stay consistent.
+## 7. Results & Analysis
+150 seconds / 6 scenes. GIF demo shows WRR vs EDF vs RM execution traces under different utilization conditions. Keyframe composite PNG for slide extraction.
 
-## How to run and test
+## 8. Figures & Visualizations
+2 SVG (`video_storyboard_timeline.svg`, `video_decision_guide.svg`) + 1 PNG (`video_keyframes_composite.png`) + 1 GIF (`wrr_vs_edf_rm_demo.gif`).
 
-```bash
-python -m pip install -r requirements.txt
-python exercise5_wrr.py --mode all --quantum 1   # simulation + Gantt SVGs
-python -m unittest -v                            # 9 tests
-python WRR.py                                    # interactive OS scheduler
-```
+## 9. Testing
+1 unit test — passing. Verifies storyboard scene count and total duration ≥ 120 seconds.
 
-Generated Gantt SVGs are written to the current directory by default
-(`wrr-gantt-<mode>.svg`); copy them to `outputs/` for archiving.
+## 10. Conclusion & References
+The video package exceeds the 2-minute requirement with 150 seconds of content across 6 scenes. Narration script provided as text; recorded voiceover requires external audio tooling. See `report_EX6_en.md` / `report_EX6_fa.md`.
 
-## File map
+---
 
-| Path | Purpose |
-|------|---------|
-| `../README.md` | Base project overview (WRR.py) |
-| `../PROJECT_INDEX.md` | Index of all 7 exercises and branches |
-| `../PROJECT_PROGRESS.md` | Upgrade status and remaining work |
-| `../README_Exercise5_WRR.md` | Exercise 5 overview |
-| `../exercise5_wrr.py` | Deterministic WRR simulation |
-| `../test_exercise5_wrr.py` | Unit tests (9 tests) |
-| `../WRR.py` | Interactive OS-process scheduler |
-| `../tools_generate_figures.py` | Figure generation from real output |
-| `../assets/wrr_sync_comparison.svg` | Sync-variant comparison diagram |
+**Source:** `src/` directory | **Tests:** `tests/` directory | **Figures:** `docs/figures/`
+**Reports:** `report_EX6_en.md`, `.docx`, `.pdf` and `report_EX6_fa.md`, `.docx`, `.pdf`
