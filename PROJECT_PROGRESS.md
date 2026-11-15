@@ -20,7 +20,7 @@
   `python exercise5_wrr.py --mode all --quantum 1` output matches
   `SAMPLE_RUN_Exercise5_WRR.txt` exactly (makespan 12).
 
-## What was done locally (pending push)
+## What was done and pushed (all branches in sync with origin)
 
 ### `main`
 
@@ -31,7 +31,7 @@
 - [x] Removed blocking 1-byte file `wrr_readme_assets`.
 - [x] Added `requirements.txt`, `.gitignore`, `PROJECT_INDEX.md`,
       `PROJECT_PROGRESS.md` (this file), `docs/README.md`.
-- [ ] Push `main` to GitHub (blocked: no GitHub credentials in agent environment).
+- [x] Pushed `main` to GitHub on 2026-11-15 (commit `ef65502`).
 
 ### `Exercise-5-WRR` (from `main`)
 
@@ -40,7 +40,7 @@
       `docs/figures/` (architecture, flowchart, metrics, sync comparison),
       `outputs/` with generated Gantt SVGs.
 - [x] Tests re-run: 9/9 PASS.
-- [ ] Push `Exercise-5-WRR` to GitHub (blocked: see above).
+- [x] Pushed `Exercise-5-WRR` to GitHub on 2026-11-15 (commit `5fcc7c7`).
 
 ### `Exercise-1-WRR`, `Exercise-2-WRR`, `Exercise-3-WRR`,
 ### `Exercise-4-WRR`, `Exercise-6-WRR`, `Exercise-7-WRR`
@@ -48,43 +48,33 @@
 - [x] Placeholder branches created with `README.md` stating the exercise
       was not found in the original repository and is awaiting user files.
       No code, numbers, or results were fabricated.
-- [ ] Push to GitHub (blocked: see above).
+- [x] Pushed all six placeholder branches to GitHub on 2026-11-15.
 
 ## Remaining work
 
-1. Push all branches (see instructions below).
+1. ~~Push all branches~~ — done 2026-11-15; verified `local == origin` for every branch.
 2. When user provides files for Exercises 1–4 and 6–7, upgrade each branch
    the same way as Exercise 5 (README, docs, figures from real data, tests).
 3. Optional: produce `.docx`/`.pdf` versions of reports from
    `docs/reports/*.md` once content is approved.
 
-## Push instructions (manual, for repository owner)
+## Push status (completed 2026-11-15)
 
-GitHub connector is not available in the agent environment, so push must be
-done by the owner. Two options:
+All branches were pushed by the repository owner's fine-grained PAT and
+verified in sync (`git ls-remote` matched local tips one-to-one):
 
-**Option A — from a local clone (recommended):**
+- `main` -> `ef65502`
+- `Exercise-5-WRR` -> `5fcc7c7`
+- `Exercise-1-WRR` -> `10575bd` · `Exercise-2-WRR` -> `feffe2c`
+- `Exercise-3-WRR` -> `4fce0e3` · `Exercise-4-WRR` -> `39c3a88`
+- `Exercise-6-WRR` -> `cb114a2` · `Exercise-7-WRR` -> `34b4e77`
 
-```bash
-git clone https://github.com/Mmdvahedi2005/WRR.git
-cd WRR
-# copy the upgraded files / fetch the bundle (see below), then:
-git push origin main
-git push origin Exercise-5-WRR
-git push origin Exercise-1-WRR Exercise-2-WRR Exercise-3-WRR Exercise-4-WRR Exercise-6-WRR Exercise-7-WRR
-```
+A full mirror also exists in `WRR-upgrade.bundle` (kept in the workspace
+of the working machine) as an offline backup of all branch tips.
 
-**Option B — from the agent bundle:**
-
-The agent provides `WRR-upgrade.bundle` (git bundle with all branches).
-On any machine with the repo:
-
-```bash
-git fetch WRR-upgrade.bundle 'refs/heads/*:refs/remotes/bundle/*'
-git push origin bundle/main:main
-git push origin bundle/Exercise-5-WRR:Exercise-5-WRR
-# ... and similarly for the other exercise branches
-```
+Note: the fine-grained token used for the push was shared in a chat and
+should be revoked and replaced by the owner (it was granted
+`Contents: Read and write` on this repository only).
 
 Do **not** merge exercise branches into `main` without review.
 

@@ -16,11 +16,11 @@ without explicit approval.
 | 2 | Exercise 2 — WRR | `Exercise-2-WRR` | ⚠️ Not found in original repo — placeholder branch created, awaiting user files | `README.md` on branch |
 | 3 | Exercise 3 — WRR | `Exercise-3-WRR` | ⚠️ Not found in original repo — placeholder branch created, awaiting user files | `README.md` on branch |
 | 4 | Exercise 4 — WRR | `Exercise-4-WRR` | ⚠️ Not found in original repo — placeholder branch created, awaiting user files | `README.md` on branch |
-| 5 | Exercise 5 — WRR with Synchronization (Semaphore / Monitor / Both) | `Exercise-5-WRR` | ✅ Found in repo and upgraded (local, pending push) | `README_Exercise5_WRR.md` + `docs/README.md` on branch |
+| 5 | Exercise 5 — WRR with Synchronization (Semaphore / Monitor / Both) | `Exercise-5-WRR` | ✅ Found in repo, upgraded and pushed 2026-11-15 | `README_Exercise5_WRR.md` + `docs/README.md` on branch |
 | 6 | Exercise 6 — WRR | `Exercise-6-WRR` | ⚠️ Not found in original repo — placeholder branch created, awaiting user files | `README.md` on branch |
 | 7 | Exercise 7 — WRR | `Exercise-7-WRR` | ⚠️ Not found in original repo — placeholder branch created, awaiting user files | `README.md` on branch |
 
-## Branch links (after push)
+## Branch links
 
 - Exercise 1: https://github.com/Mmdvahedi2005/WRR/tree/Exercise-1-WRR
 - Exercise 2: https://github.com/Mmdvahedi2005/WRR/tree/Exercise-2-WRR
@@ -30,8 +30,7 @@ without explicit approval.
 - Exercise 6: https://github.com/Mmdvahedi2005/WRR/tree/Exercise-6-WRR
 - Exercise 7: https://github.com/Mmdvahedi2005/WRR/tree/Exercise-7-WRR
 
-> Note: these links return 404 until the branches are pushed to GitHub.
-> See `PROJECT_PROGRESS.md` for push instructions.
+> All branches are live on GitHub (pushed and verified 2026-11-15).
 
 ## Base project (on `main`)
 
