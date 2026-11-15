@@ -1,57 +1,36 @@
-# Documentation Guide — WRR
+# Exercise 2 — WRR vs EDF vs RM Comparison
 
-This folder collects all documentation for the WRR repository.
-Start here, then follow the links below.
+## 1. Overview
+Comprehensive comparison of WRR with Earliest Deadline First (EDF) and Rate Monotonic (RM) across starvation, deadlines, overhead, fairness, and schedulability. Includes real simulation data from a discrete-time job simulator with RTA and Monte Carlo experiments.
 
-## Contents
+## 2. Problem Statement
+Compare three CPU scheduling algorithms (WRR, EDF, RM) in all aspects, with scientifically accurate results backed by code execution.
 
-- [Figures](./figures/) — generated diagrams and charts
-  - `wrr_gantt.png` — Gantt chart from real `schedule()` output
-    (P1 w=3/b=5, P2 w=2/b=4, P3 w=1/b=3, quantum=1, makespan=12).
-    Read it left-to-right: each block is one quantum; taller weight means
-    more consecutive blocks per round.
-  - `wrr_cpu_share.png` — idealized weight share vs actual burst share.
-    Blue = `w_i / Σw`, orange = `burst_i / Σburst`. Use it to see why
-    weight proportions are expectations, not guarantees, with finite bursts.
-- [Reports](./reports/) — academic reports
-  - `report_en.md` — English report (Exercise 5 + base project).
-  - `report_fa.md` — Persian report (گزارش فارسی).
-- [References](./references/) — bibliography and further reading.
+## 3. Scientific Background
+EDF is a dynamic-priority optimal scheduler. RM is a static-priority optimal scheduler for periodic tasks with utilization bound U_LL(n) = n(2^(1/n) − 1). WRR is a weight-based fair-share scheduler without deadline awareness.
 
-## How figures are produced
+## 4. Methodology
+Discrete-time periodic job simulator (`compare_schedulers.py`) with Response-Time Analysis, Liu-Layland bound, and 400-set Monte Carlo experiments (seed=20261115). Four workload scenarios: W1 underload, W2 high-util gap, W3 overload domino, plus utilization-band feasibility.
 
-All PNG figures are generated from the real scheduler code, not drawn by hand:
+## 5. Implementation Details
+Job-level simulator with periodic task release, deadline tracking, context-switch counting, and schedulability reporting. RTA for RM, EDF simulation, WRR weighted-slice simulation.
 
-```bash
-python tools_generate_figures.py
-```
+## 6. Experimental Setup
+Run `python3 src/compare_schedulers.py` for all benchmarks. Run `python3 -m unittest tests/test_compare_schedulers.py` for tests.
 
-The script imports `exercise5_wrr.schedule()`, runs the default workload,
-and writes the PNGs above. If you change the workload in the script,
-re-run it so figures and code stay consistent.
+## 7. Results & Analysis
+W1: All 0/7 misses. W2: EDF=0/15, RM=1/15, WRR=1/15 misses. W3: WRR proportional shares (50/33/17), RM starves T3 completely, EDF domino cascade (9/13 misses). Monte Carlo: EDF 100% up to U≈0.96, RM degrades after 0.78, WRR degrades after 0.65.
 
-## How to run and test
+## 8. Figures & Visualizations
+2 SVG (`taxonomy_wrr_rm_edf.svg`, `overload_starvation_mechanism.svg`) + 3 PNG (`schedulability_monte_carlo.png`, `w2_high_util_gantt_comparison.png`, `w3_overload_starvation_domino.png`).
 
-```bash
-python -m pip install -r requirements.txt
-python exercise5_wrr.py --mode all --quantum 1   # simulation + Gantt SVGs
-python -m unittest -v                            # 9 tests
-python WRR.py                                    # interactive OS scheduler
-```
+## 9. Testing
+6 unit tests — all passing. Cover feasibility, miss counts, context switches, and Monte Carlo determinism.
 
-Generated Gantt SVGs are written to the current directory by default
-(`wrr-gantt-<mode>.svg`); copy them to `outputs/` for archiving.
+## 10. Conclusion & References
+EDF achieves the best schedulability, RM performs well at low utilization, and WRR provides weighted fairness with predictable proportional shares but lower deadline guarantees at high utilization. See `report_EX2_en.md` / `report_EX2_fa.md`.
 
-## File map
+---
 
-| Path | Purpose |
-|------|---------|
-| `../README.md` | Base project overview (WRR.py) |
-| `../PROJECT_INDEX.md` | Index of all 7 exercises and branches |
-| `../PROJECT_PROGRESS.md` | Upgrade status and remaining work |
-| `../README_Exercise5_WRR.md` | Exercise 5 overview |
-| `../exercise5_wrr.py` | Deterministic WRR simulation |
-| `../test_exercise5_wrr.py` | Unit tests (9 tests) |
-| `../WRR.py` | Interactive OS-process scheduler |
-| `../tools_generate_figures.py` | Figure generation from real output |
-| `../assets/wrr_sync_comparison.svg` | Sync-variant comparison diagram |
+**Source:** `src/` directory | **Tests:** `tests/` directory | **Figures:** `docs/figures/`
+**Reports:** `report_EX2_en.md`, `.docx`, `.pdf` and `report_EX2_fa.md`, `.docx`, `.pdf`

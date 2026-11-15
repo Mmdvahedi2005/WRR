@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="390" viewBox="0 0 920 390">
+<defs>
+  <linearGradient id="hdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#0F172A"/>
+    <stop offset="100%" stop-color="#1E3A8A"/>
+  </linearGradient>
+  <filter id="cardShadow" x="-4%" y="-4%" width="108%" height="112%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+  </marker>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563EB"/>
+  </marker>
+  <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+  </marker>
+</defs>
+<rect width="920" height="390" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+<rect x="0" y="0" width="920" height="64" rx="12" fill="url(#hdrGrad)"/>
+<rect x="0" y="50" width="920" height="14" fill="url(#hdrGrad)"/>
+<text x="28" y="30" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF">Overload & Starvation Behavior Mechanism (When Total Demand U > 1.0)</text>
+<text x="28" y="50" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" fill="#CBD5E1">Why WRR Guarantees Positive Progress While RM Starves Low-Priority Tasks and EDF Suffers Domino Cascading</text>
+<g filter="url(#cardShadow)">
+  <rect x="330" y="82" width="260" height="52" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.6"/>
+</g>
+<text x="460.0" y="104" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Sustained Overload: Σ(C_i / T_i) > 1.0</text>
+<text x="460.0" y="122" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Ready queue never empties; deadlines exceed capacity</text>
+<g filter="url(#cardShadow)">
+  <rect x="35" y="200" width="265" height="155" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+</g>
+<text x="167.5" y="222" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Under WRR (Proportional Fair)</text>
+<text x="167.5" y="240" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Every task i receives w_i / Σw</text>
+<text x="167.5" y="255" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">CPU share every round.</text>
+<text x="167.5" y="270" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Result on W3 (U=1.375):</text>
+<text x="167.5" y="285" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">T1=50%, T2=33.3%, T3=16.7%</text>
+<text x="167.5" y="300" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">ZERO Starvation!</text>
+<g filter="url(#cardShadow)">
+  <rect x="328" y="200" width="265" height="155" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+</g>
+<text x="460.5" y="222" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Under RM (Static Priority)</text>
+<text x="460.5" y="240" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">T1 & T2 consume 50%+50%=100%.</text>
+<text x="460.5" y="255" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Lowest-priority T3 never runs!</text>
+<text x="460.5" y="270" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Result on W3 (U=1.375):</text>
+<text x="460.5" y="285" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">T1=50%, T2=50%, T3=0.0%</text>
+<text x="460.5" y="300" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">T3 Completely Starved!</text>
+<g filter="url(#cardShadow)">
+  <rect x="620" y="200" width="265" height="155" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
+</g>
+<text x="752.5" y="222" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" font-weight="bold" fill="#0F172A">Under EDF (Dynamic Deadline)</text>
+<text x="752.5" y="240" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Overdue jobs retain smallest d_{i,k}</text>
+<text x="752.5" y="255" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">and delay newly arrived jobs.</text>
+<text x="752.5" y="270" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Result on W3 (U=1.375):</text>
+<text x="752.5" y="285" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">9 / 13 jobs miss deadlines!</text>
+<text x="752.5" y="300" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" fill="#334155">Classic Domino Effect!</text>
+<line x1="400" y1="134" x2="168" y2="198" stroke="#2563EB" stroke-width="1.7" marker-end="url(#arrowBlue)"/>
+<text x="284.0" y="160.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="bold" fill="#2563EB">WRR Policy</text>
+<line x1="460" y1="134" x2="460" y2="198" stroke="#0D9488" stroke-width="1.7" marker-end="url(#arrow)"/>
+<text x="460.0" y="160.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="bold" fill="#0D9488">RM Policy</text>
+<line x1="520" y1="134" x2="752" y2="198" stroke="#D97706" stroke-width="1.7" marker-end="url(#arrowRed)"/>
+<text x="636.0" y="160.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="bold" fill="#D97706">EDF Policy</text>
+</svg>
